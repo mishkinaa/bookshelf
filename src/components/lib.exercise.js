@@ -6,30 +6,29 @@ import {FaSpinner} from 'react-icons/fa'
 import {keyframes} from "@emotion/core";
 
 const spin = keyframes({
-    '0%': { transform: 'rotate(0deg)' },
-    '100%': { transform: 'rotate(360deg)' }
+    '0%': {transform: 'rotate(0deg)'},
+    '100%': {transform: 'rotate(360deg)'}
 })
 
-const Button = styled.button(props => {
-    const baseStyles = {
+const buttonVariants = {
+    primary: {
+        background: colors.indigo,
+        color: colors.base,
+    },
+    secondary: {
+        background: colors.gray,
+        color: colors.text,
+    },
+}
+
+const Button = styled.button({
         padding: '10px 15px',
         border: '0',
         lineHeight: '1',
         borderRadius: '3px',
-    }
-    if (props.variant === 'primary') {
-        return {
-            ...baseStyles,
-            background: colors.indigo,
-            color: colors.base,
-        }
-    }
-    return {
-        ...baseStyles,
-        background: colors.gray,
-        color: colors.text,
-    }
-})
+    },
+    ({variant = 'primary'}) => buttonVariants[variant]
+)
 
 const Input = styled.input({
     borderRadius: '3px',
